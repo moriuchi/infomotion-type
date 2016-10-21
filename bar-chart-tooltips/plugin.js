@@ -186,11 +186,11 @@ BarChartTooltips.prototype.refresh = function() {
         .attr('class', 'd3-tooltip d3-tip n');
 }
 
-BarChartTooltips.prototype.resize = function() {
+BarChartTooltips.prototype.resize = function(options) {
     var that = this;
 
-    this.height = that.options.height - that.margin.top - that.margin.bottom;
-    this.width = that.options.width - that.margin.left - that.margin.right;
+    this.height = options.height - that.margin.top - that.margin.bottom;
+    this.width = options.width - that.margin.left - that.margin.right;
 
     this.x.rangeRoundBands([0, this.width], .1);
     this.y.range([this.height, 0]);
