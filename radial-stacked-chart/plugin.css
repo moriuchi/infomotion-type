@@ -1,0 +1,9 @@
+.stackedchart__labels text,
+.stackedchart__ticks text {
+  font-size: 12px;
+}
+
+.stackedchart__legends text {
+  text-anchor: start;
+}
+
