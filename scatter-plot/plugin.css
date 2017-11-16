@@ -1,0 +1,18 @@
+body {
+  font: 10px sans-serif;
+}
+
+.scatterplot__axis path,
+.scatterplot__axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.scatterplot__axis .axis__label{
+    font-weight: bold; 
+}
+
+.dot {
+  stroke: #000;
+}
