@@ -1,0 +1,21 @@
+{
+  "defaultSettings": {
+    "label" : "State",
+    "values":[
+            {"header":"Under 5 Years", "value":"Under5Years"},
+            {"header":"5 to 13 Years", "value":"5to13Years"},
+            {"header":"14 to 17 Years", "value":"14to17Years"},
+            {"header":"18 to 24 Years", "value":"18to24Years"},
+            {"header":"25 to 44 Years", "value":"25to44Years"},
+            {"header":"45 to 64 Years", "value":"45to64Years"},
+            {"header":"65 Years and Over", "value":"65YearsandOver"}
+        ]
+  },
+  "sampleData": [
+        {"State": "VA", "Under5Years": 522672, "5to13Years": 887525, "14to17Years": 413004, "18to24Years": 768475, "25to44Years": 2203286, "45to64Years": 2033550, "65YearsandOver": 940577},
+        {"State": "WA", "Under5Years": 433119, "5to13Years": 750274, "14to17Years": 357782, "18to24Years": 610378, "25to44Years": 1850983, "45to64Years": 1762811, "65YearsandOver": 783877},
+        {"State": "WV", "Under5Years": 105435, "5to13Years": 189649, "14to17Years": 91074, "18to24Years": 157989, "25to44Years": 470749, "45to64Years": 514505, "65YearsandOver": 285067},
+        {"State": "WI", "Under5Years": 362277, "5to13Years": 640286, "14to17Years": 311849, "18to24Years": 553914, "25to44Years": 1487457, "45to64Years": 1522038, "65YearsandOver": 750146},
+        {"State": "WY", "Under5Years": 38253, "5to13Years": 60890, "14to17Years": 29314, "18to24Years": 53980, "25to44Years": 137338, "45to64Years": 147279, "65YearsandOver": 65614}
+  ]
+}
