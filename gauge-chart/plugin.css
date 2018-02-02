@@ -1,0 +1,8 @@
+.loadGaugeChartText { 
+    font-family: Helvetica; 
+    font-weight: bold; 
+}
+
+.gaugechart__axis path{
+    display: none;
+}
