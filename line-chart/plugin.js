@@ -118,8 +118,10 @@ LineChart.prototype.calculate = function() {
     var newdata = {};
     this.data.forEach(function(d) {
         var k = d[that.settings.label];
+        if(!k) return;
         if(!newdata[k]) newdata[k] = 0;
-        newdata[k] += d[that.settings.value];
+//        newdata[k] += d[that.settings.value];
+        newdata[k] += (isNaN(d[that.settings.value]))? 0 : d[that.settings.value];
     });
     return Object.keys(newdata).map(function(k) {
         return {
@@ -142,21 +144,6 @@ LineChart.prototype.refresh = function() {
     line.datum(data)
         .attr("class", "linechart__line line")
         .attr("d", that.line);
-
-/*
-    var valLabel = this.base.selectAll(".linechart__vallabel").data(data);
-    valLabel.enter().append('text');
-    valLabel.attr("class", "linechart__vallabel")
-        .transition()
-        .duration(500)
-        .attr("x", function(d) {
-            return that.x(d.key)+that.x.rangeBand()/2-d.value.toString().length*3;
-        })
-        .attr("y", function(d, i) { return that.height; })
-        .attr("dy", "-1em");
-
-    valLabel.exit().remove();
-*/
 
     this.svg = d3.select(this.el).transition();
 

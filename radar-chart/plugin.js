@@ -48,7 +48,7 @@ function RadarChart(settings, options) {
                   .attr("height", height + margin.top + margin.bottom);
 
     this.base = this.svg.append("g")
-      .attr("transform", "scale(1,1)translate(" + margin.left + "," + margin.top + ")");
+      .attr("transform", "scale(1,1)translate(" + -margin.left + "," + margin.top + ")");
 
 }
 
@@ -86,6 +86,7 @@ RadarChart.prototype.calculate = function() {
     var newdata = {};
     this.data.forEach(function(d) {
         var k = d[that.settings.label];
+        if(!k) return;
         var keydata = {};
         if(!newdata[k]) {
             newdata[k] = {};
@@ -94,7 +95,8 @@ RadarChart.prototype.calculate = function() {
             keydata = newdata[k];
         }
         that.keys.forEach(function(v) { 
-            keydata[v] += d[v]; 
+//            keydata[v] += d[v]; 
+            keydata[v] += (isNaN(d[v]))? 0 : d[v]; 
         });
         newdata[k] = keydata;
     });
@@ -119,8 +121,8 @@ RadarChart.prototype.refresh = function() {
 
     var raderChart = radarChartjs();
     raderChart.defaultConfig.radius = 5;
-    raderChart.defaultConfig.w = that.height + that.margin.top;
-    raderChart.defaultConfig.h = that.height + that.margin.top;
+    raderChart.defaultConfig.w = that.height;
+    raderChart.defaultConfig.h = that.height;
 
     var chart = raderChart.chart();
     var cfg = chart.config();
@@ -134,7 +136,7 @@ RadarChart.prototype.refresh = function() {
     this.base.selectAll(".radarchart__legends").remove();
     var legends = this.base.append("g")
                     .attr("class", "radarchart__legends")
-                    .attr("transform", "translate(" + (that.width*0.8+that.margin.right) + ",0)");
+                    .attr("transform", "translate(" + (that.width*0.8+that.margin.right) + "," + -(that.margin.top*0.75) + ")");
 
     var legend = legends.selectAll("g").data(data);
     legend.enter().append("g")

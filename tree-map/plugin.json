@@ -1,0 +1,30 @@
+{
+  "defaultSettings": {
+    "mode": "size",
+    "label" : "name",
+    "value" : "value",
+    "hierarchy" : "children"
+  },
+  "sampleData": [
+    {"name": "北海道", "value": 5401210 },
+    {"name": "東北", 
+        "children": [ 
+            {"name": "青森", "value": 1338465 }, 
+            {"name": "岩手", "value": 1289470 }, 
+            {"name": "宮城", "value": 2324466 }, 
+            {"name": "秋田", "value": 1043015 }, 
+            {"name": "山形", "value": 1129560 }, 
+            {"name": "福島", "value": 1953699 } 
+        ] },
+    {"name": "関東", 
+        "children": [ 
+            {"name": "茨城", "value": 2970231 }, 
+            {"name": "栃木", "value": 1998864 }, 
+            {"name": "群馬", "value": 2005320 }, 
+            {"name": "埼玉", "value": 7323413 }, 
+            {"name": "千葉", "value": 6265899 }, 
+            {"name": "東京", "value": 13415349 }, 
+            {"name": "神奈川", "value": 9136151 }
+        ] }
+  ]
+}

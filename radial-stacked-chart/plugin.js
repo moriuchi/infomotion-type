@@ -43,7 +43,7 @@ function RadialStackedChart(settings, options) {
     this.width = width;
     this.height = height;
     this.margin = margin;
-    this.outerRadius = Math.round(Math.min(width, height) / 2) + 20;
+    this.outerRadius = Math.round(Math.min(width, height) / 2) - 30;
     this.innerRadius = this.outerRadius * 0.45;
 
     this.x = d3.scale.ordinal()
@@ -61,7 +61,7 @@ function RadialStackedChart(settings, options) {
                   .attr("height", height + margin.top + margin.bottom);
 
     this.base = this.svg.append("g")
-      .attr("transform", "scale(1,1)translate(" + margin.left + "," + margin.top + ")");
+      .attr("transform", "scale(1,1)translate(" + -(margin.left/2) + "," + margin.top + ")");
 
     this.radial = this.base.append("g").attr("class", "stackedchart__radial");
     this.labels = this.base.append("g").attr("class", "stackedchart__labels");
@@ -147,6 +147,7 @@ RadialStackedChart.prototype.calculate = function() {
     var newdata = {};
     this.data.forEach(function(d) {
         var k = d[that.settings.label];
+        if(!k) return;
         var keydata = {};
         if(!newdata[k]) {
             newdata[k] = {};
@@ -262,7 +263,7 @@ RadialStackedChart.prototype.resize = function(options) {
     this.height = options.height - that.margin.top - that.margin.bottom;
     this.width = options.width - that.margin.left - that.margin.right;
 
-    this.outerRadius = Math.round(Math.min(this.width, this.height) / 2) + 20;
+    this.outerRadius = Math.round(Math.min(this.width, this.height) / 2) - 30;
     this.innerRadius = this.outerRadius * 0.45;
 
     this.x.rangeBands([0, 2 * Math.PI]);

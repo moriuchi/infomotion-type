@@ -1,0 +1,19 @@
+{
+  "defaultSettings": {
+    "label" : "State",
+    "values":[
+        {"header":"strength", "value":"strength"},
+        {"header":"intelligence", "value":"intelligence"},
+        {"header":"charisma", "value":"charisma"},
+        {"header":"dexterity", "value":"dexterity"},
+        {"header":"luck", "value":"luck"}
+    ]
+  },
+  "sampleData": [
+    {"State": "VA", "strength": 522672, "intelligence": 887525, "charisma": 413004, "dexterity": 768475, "luck": 940577},
+    {"State": "WA", "strength": 433119, "intelligence": 750274, "charisma": 357782, "dexterity": 610378, "luck": 783877},
+    {"State": "WV", "strength": 105435, "intelligence": 189649, "charisma": 91074, "dexterity": 157989, "luck": 285067},
+    {"State": "WI", "strength": 362277, "intelligence": 640286, "charisma": 311849, "dexterity": 553914, "luck": 750146},
+    {"State": "WY", "strength": 380253, "intelligence": 600890, "charisma": 290314, "dexterity": 53980, "luck": 650614}
+  ]
+}

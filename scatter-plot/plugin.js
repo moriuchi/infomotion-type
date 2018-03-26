@@ -24,7 +24,7 @@ function ScatterPlot(settings, options) {
     this.data = [];
 
     var margin = {top: 50, right: 50, bottom: 50, left: 40},
-        width = (options.width || 700) - margin.left - margin.right,
+        width = (options.width || 700) - margin.left - (margin.right*2),
         height = (options.height || 500) - margin.top - margin.bottom;
 
     this.width = width;
@@ -110,8 +110,11 @@ ScatterPlot.prototype.calculate = function() {
     var newdata = [];
     this.data.forEach(function(d) {
         var k = d[that.settings.label];
-        var xval = d[that.settings.xvalue];
-        var yval = d[that.settings.yvalue];
+        if(!k) return;
+//        var xval = d[that.settings.xvalue];
+//        var yval = d[that.settings.yvalue];
+        var xval = (isNaN(d[that.settings.xvalue]))? 0 : d[that.settings.xvalue];
+        var yval = (isNaN(d[that.settings.yvalue]))? 0 : d[that.settings.yvalue];
         newdata.push({
             key: k,
             xvalue: xval,
@@ -154,17 +157,16 @@ ScatterPlot.prototype.refresh = function() {
 
     legend.selectAll("rect").remove();
     legend.append("rect")
-        .attr("x", that.width - 18)
+        .attr("x", that.width + that.margin.right)
         .attr("width", 18)
         .attr("height", 18)
         .attr("fill", that.color);
 
     legend.selectAll("text").remove();
     legend.append("text")
-        .attr("x", that.width - 24)
+        .attr("x", that.width + that.margin.right - 18)
         .attr("y", 9)
         .attr("dy", "0.35em")
-        .attr("text-anchor", "end")
         .text(function(d) { return d });
 
     legend.exit().remove();
@@ -184,7 +186,7 @@ ScatterPlot.prototype.resize = function(options) {
     var that = this;
 
     this.height = options.height - that.margin.top - that.margin.bottom;
-    this.width = options.width - that.margin.left - that.margin.right;
+    this.width = options.width - that.margin.left - (that.margin.right*2);
 
     this.x.range([0, this.width]);
     this.y.range([this.height, 0]);

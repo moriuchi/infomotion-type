@@ -100,8 +100,10 @@ DonutChart.prototype.calculate = function() {
     var newdata = {};
     this.data.forEach(function(d) {
         var k = d[that.settings.label];
+        if(!k) return;
         if(!newdata[k]) newdata[k] = 0;
-        newdata[k] += d[that.settings.value];
+//        newdata[k] += d[that.settings.value];
+        newdata[k] += (isNaN(d[that.settings.value]))? 0 : d[that.settings.value];
     });
     return Object.keys(newdata).map(function(k) {
         return {

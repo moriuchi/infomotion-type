@@ -1,4 +1,4 @@
-path{
+.quantdiv path{
 	fill-opacity:0.8;
 	stroke-opacity:0;
 }
@@ -18,7 +18,7 @@ path{
 	color:rgb(150,148,109);
 	font-size:12px;
 }
-svg{
+.quantdiv svg{
 	display:inline;
 	float:left;
 }

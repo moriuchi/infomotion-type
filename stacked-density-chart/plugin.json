@@ -1,0 +1,21 @@
+{
+  "defaultSettings": {
+    "distMin": -0.67930643331712,
+    "distMax": 2.0725075529,
+    "mean": 0.0393,
+    "legends":[
+        {"key": "GROUP01", "mean": -0.5063, "count": 161},
+        {"key": "GROUP02", "mean": -0.3542, "count": 180},
+        {"key": "GROUP03", "mean": -0.1934, "count": 172280},
+        {"key": "GROUP04", "mean": -0.0435, "count": 1863},
+        {"key": "GROUP05", "mean": 0.182, "count": 10}
+    ]
+  },
+  "sampleData": [
+    {"GROUP01": 416334, "GROUP02": 725948, "GROUP03": 336312, "GROUP04": 550612,  "GROUP05": 819626},
+    {"GROUP01": 2027307, "GROUP02": 3277946, "GROUP03": 1420518, "GROUP04": 2454721, "GROUP05": 2472223},
+    {"GROUP01": 268916, "GROUP02": 413034, "GROUP03": 167685, "GROUP04": 329585, "GROUP05": 246202},
+    {"GROUP01": 32635, "GROUP02": 62538, "GROUP03": 33757, "GROUP04": 61679, "GROUP05": 86649},
+    {"GROUP01": 522672, "GROUP02": 887525, "GROUP03": 413004, "GROUP04": 768475, "GROUP05": 940577}
+  ]
+}

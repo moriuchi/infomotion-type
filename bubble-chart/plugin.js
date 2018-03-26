@@ -101,6 +101,7 @@ BubbleChart.prototype.calculate = function () {
                 recurse(node[label], child); 
             });
         } else {
+            if ((!name) && (!node[label])) return;
             var newdata = { 
                 "packageName": "",
                 "className": "",
@@ -115,7 +116,8 @@ BubbleChart.prototype.calculate = function () {
             });
             newdata["packageName"] = name;
             newdata["className"] = node[label];
-            newdata["value"] += node[value];
+//            newdata["value"] += node[value];
+            newdata["value"] += (isNaN(node[value]))? 0 : node[value];
             classes.push(newdata);
         }
     }
@@ -161,7 +163,7 @@ BubbleChart.prototype.refresh = function() {
         .attr("dy", ".3em")
         .style("text-anchor", "middle")
         .style("pointer-events", "none")
-        .text(function(d) { return d.className.substring(0, d.r / 3); });
+        .text(function(d) { return (d.className)? d.className.substring(0, d.r / 3) : ""; });
 
     this.svg = d3.select(this.el).transition();
 

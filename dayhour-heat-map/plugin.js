@@ -89,9 +89,11 @@ HeatMap.prototype.calculate = function() {
     this.data.forEach(function(d) {
         var day = d[that.settings.day];
         var hour = d[that.settings.hour];
+        if ((!day) && (!hour)) return;
         var k = day + ":" + hour;
         if(!newdata[k]) newdata[k] = 0;
-        newdata[k] += d[that.settings.value];
+//        newdata[k] += d[that.settings.value];
+        newdata[k] += (isNaN(d[that.settings.value]))? 0 : d[that.settings.value];
     });
     return Object.keys(newdata).map(function(k) {
         var keysplit = k.split(":");

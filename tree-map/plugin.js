@@ -105,6 +105,7 @@ TreeMap.prototype.calculate = function() {
                 recurse(node[label], child); 
             });
         } else {
+            if ((!name) && (!node[label])) return;
             var newdata = { 
                 "packageName": "",
                 "className": "",

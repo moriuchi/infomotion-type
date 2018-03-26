@@ -16,19 +16,19 @@ StackedDensityChart.defaultSettings = {
 
 StackedDensityChart.settings = EnebularIntelligence.SchemaProcessor([
         {
-          type : "number", name : "distMin", help : "最低値を指定してください。"
+          type : "text", name : "distMin", help : "最低値を指定してください。"
         },{
-          type : "number", name : "distMax", help : "最高値を指定してください。"
+          type : "text", name : "distMax", help : "最高値を指定してください。"
         },{
-          type : "number", name : "mean", help : "平均値を指定してください。"
+          type : "text", name : "mean", help : "平均値を指定してください。"
         },
         {
           type : "list", name : "legends", help : "値を表すデータのkeyを指定してください。", children:[{ 
               type : "key", name : "key"
           },{
-              type : "number", name : "mean"
+              type : "text", name : "mean"
           },{
-              type : "number", name : "count"
+              type : "text", name : "count"
           }]
         }
     ], StackedDensityChart.defaultSettings);
@@ -95,7 +95,7 @@ function StackedDensityChart(settings, options) {
         .attr("y", -6);
     stat.append("text")
         .attr("class", "mean")
-        .attr("x", 250)
+        .attr("x", 300)
         .attr("y", -6);
 
     // draw yellow background for graph.
@@ -204,6 +204,11 @@ StackedDensityChart.prototype.calculate = function() {
     var newdata = {};
     this.data.forEach(function(d, i) {
         var k = i;
+        var hasData = false;
+        that.keys.forEach(function(v) { 
+            if (d[v]) hasData = true;
+        });
+        if (!hasData) return;
         var keydata = {};
         if(!newdata[k]) {
             newdata[k] = {};
@@ -213,8 +218,10 @@ StackedDensityChart.prototype.calculate = function() {
             keydata = newdata[k];
         }
         that.keys.forEach(function(v) { 
-            keydata[v] += d[v]; 
-            keydata["total"] += d[v];
+//            keydata[v] += d[v];
+//            keydata["total"] += d[v];
+            keydata[v] += (isNaN(d[v]))? 0 : d[v];
+            keydata["total"] += (isNaN(d[v]))? 0 : d[v];
         });
         newdata[k] = keydata;
     });

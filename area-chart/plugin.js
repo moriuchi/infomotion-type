@@ -49,12 +49,6 @@ function AreaChart(settings, options) {
       .scale(this.y)
       .orient("left");
 
-    this.area = d3.svg.area()
-//        .x(function(d) { return that.x(d.key); })
-        .x(function(d) { return that.x(d.key)+that.x.rangeBand()/2; })
-        .y0(that.height)
-        .y1(function(d) { return that.y(d.value); });
-
     this.svg = d3.select(this.el).append("svg")
                   .attr('class', 'areachart')
                   .attr('class', 'svgWrapper')
@@ -119,8 +113,10 @@ AreaChart.prototype.calculate = function() {
     var newdata = {};
     this.data.forEach(function(d) {
         var k = d[that.settings.label];
+        if(!k) return;
         if(!newdata[k]) newdata[k] = 0;
-        newdata[k] += d[that.settings.value];
+//        newdata[k] += d[that.settings.value];
+        newdata[k] += (isNaN(d[that.settings.value]))? 0 : d[that.settings.value];
     });
     return Object.keys(newdata).map(function(k) {
         return {
@@ -138,26 +134,17 @@ AreaChart.prototype.refresh = function() {
 //    this.x.domain(d3.extent(data, function(d) { return d.key; }));
     this.y.domain([0, maxValue]);
 
+    var arealayout = d3.svg.area()
+        .x(function(d) { return that.x(d.key)+that.x.rangeBand()/2; })
+        .y0(that.height)
+        .y1(function(d) { return that.y(d.value); });
+
+
     var area = this.base.selectAll(".areachart__area").data(new Array(data));
     area.enter().append("path");
     area.datum(data)
         .attr("class", "areachart__area area")
-        .attr("d", that.area);
-
-/*
-    var valLabel = this.base.selectAll(".areachart__vallabel").data(data);
-    valLabel.enter().append('text');
-    valLabel.attr("class", "areachart__vallabel")
-        .transition()
-        .duration(500)
-        .attr("x", function(d) {
-            return that.x(d.key)+that.x.rangeBand()/2-d.value.toString().length*3;
-        })
-        .attr("y", function(d, i) { return that.height; })
-        .attr("dy", "-1em");
-
-    valLabel.exit().remove();
-*/
+        .attr("d", arealayout);
 
     this.svg = d3.select(this.el).transition();
 

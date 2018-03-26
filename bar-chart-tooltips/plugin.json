@@ -1,0 +1,14 @@
+{
+  "defaultSettings": {
+    "label" : "letter",
+    "value": "frequency",
+    "labelNames" : []
+  },
+  "sampleData": [
+    {"letter": "AS", "frequency": 0.12},
+    {"letter": "DF", "frequency": 0.23},
+    {"letter": "GH", "frequency": 0.25},
+    {"letter": "KL", "frequency": 0.17},
+    {"letter": "ZX", "frequency": 0.28}
+  ]
+}

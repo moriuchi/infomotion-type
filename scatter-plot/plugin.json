@@ -1,0 +1,14 @@
+{
+  "defaultSettings": {
+    "label" : "species",
+    "xvalue": "sepalWidth",
+    "yvalue": "sepalLength"
+  },
+  "sampleData": [
+	{"species": "A", "sepalWidth": 9.2, "sepalLength": 8.2},
+    {"species": "B", "sepalWidth": 6.7, "sepalLength": 5.6},
+    {"species": "C", "sepalWidth": 8.2, "sepalLength": 7.2},
+    {"species": "A", "sepalWidth": 5.3, "sepalLength": 4.4},
+    {"species": "B", "sepalWidth": 7.2, "sepalLength": 6.2}
+  ]
+}

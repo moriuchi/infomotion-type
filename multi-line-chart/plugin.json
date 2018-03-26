@@ -1,0 +1,17 @@
+{
+  "defaultSettings": {
+    "label" : "date",
+    "values":[
+        {"header":"New York", "value":"NewYork"},
+        {"header":"San Francisco", "value":"SanFrancisco"},
+        {"header":"Austin", "value":"Austin"}
+    ]
+  },
+  "sampleData": [
+    {"date": "2018-01-30", "NewYork": 63.4, "SanFrancisco": 62.7, "Austin": 72.2},
+    {"date": "2018-01-31", "NewYork": 58.0, "SanFrancisco": 59.9, "Austin": 67.7},
+    {"date": "2018-02-01", "NewYork": 53.3, "SanFrancisco": 59.1, "Austin": 69.4},
+    {"date": "2018-02-02", "NewYork": 55.7, "SanFrancisco": 58.8, "Austin": 68.0},
+    {"date": "2018-02-03", "NewYork": 64.2, "SanFrancisco": 58.7, "Austin": 72.4}
+  ]
+}

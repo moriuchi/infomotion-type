@@ -92,23 +92,22 @@ function StackedBarChart(settings, options) {
     this.base.append("g")
         .attr("class", "barchart__labels");
 
-    var legend = this.base.selectAll(".legend").data(that.settings.values);
+    this.legends = this.base.append("g").attr("class", "chart__legends");
+    var legend = this.legends.selectAll(".legend").data(that.settings.values);
     legend.enter().append("g")
         .attr("class", "legend")
         .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; })
         .style("font", "10px sans-serif");
 
     legend.append("rect")
-        .attr("x", that.width - 18)
         .attr("width", 18)
         .attr("height", 18)
         .attr("fill", function(d) { return that.color(d.value); });
 
     legend.append("text")
-        .attr("x", that.width - 24)
+        .attr("x", 24)
         .attr("y", 9)
         .attr("dy", "0.35em")
-        .attr("text-anchor", "end")
         .text(function(d) { return d.header; });
 }
 
@@ -146,6 +145,7 @@ StackedBarChart.prototype.calculate = function() {
     var newdata = {};
     this.data.forEach(function(d) {
         var k = d[that.settings.label];
+        if(!k) return;
         var keydata = {};
         if(!newdata[k]) {
             newdata[k] = {};
@@ -155,8 +155,10 @@ StackedBarChart.prototype.calculate = function() {
             keydata = newdata[k];
         }
         that.keys.forEach(function(v) { 
-            keydata[v] += d[v]; 
-            keydata["total"] += d[v];
+//            keydata[v] += d[v]; 
+//            keydata["total"] += d[v];
+            keydata[v] += (isNaN(d[v]))? 0 : d[v]; 
+            keydata["total"] += (isNaN(d[v]))? 0 : d[v];
         });
         newdata[k] = keydata;
     });
@@ -225,9 +227,6 @@ StackedBarChart.prototype.refresh = function() {
 
     valLabel.exit().remove();
 
-    var legend = this.base.selectAll(".legend");
-    legend.selectAll("rect").attr("x", that.width - 18);
-    legend.selectAll("text").attr("x", that.width - 24);
 
     this.svg = d3.select(this.el).transition();
 
@@ -239,6 +238,9 @@ StackedBarChart.prototype.refresh = function() {
     this.svg.select(".y.barchart__axis")
         .duration(500)
         .call(this.yAxis);
+
+    this.legends.attr("transform", "translate(" + that.width + ",0)");
+
 }
 
 StackedBarChart.prototype.getLabel = function(d, i) {
@@ -261,8 +263,16 @@ StackedBarChart.prototype.getValue = function(d) {
 StackedBarChart.prototype.resize = function(options) {
     var that = this;
 
+    var maxLegendWidth = 0;
+    d3.select(this.el).selectAll(".chart__legends text").each(function(d){
+        var bbox = this.getBBox();
+        if (maxLegendWidth < bbox.width) {
+            maxLegendWidth = bbox.width;
+        }
+    });
+
     this.height = options.height - that.margin.top - that.margin.bottom;
-    this.width = options.width - that.margin.left - that.margin.right;
+    this.width = options.width - that.margin.left - that.margin.right - maxLegendWidth;
 
     this.x.rangeRoundBands([0, this.width], .1);
     this.y.range([this.height, 0]);

@@ -174,6 +174,11 @@ StackedQuantileChart.prototype.calculate = function() {
     var newdata = {};
     this.data.forEach(function(d, i) {
         var k = i;
+        var hasData = false;
+        that.keys.forEach(function(v) { 
+            if (d[v]) hasData = true;
+        });
+        if (!hasData) return;
         var keydata = {};
         if(!newdata[k]) {
             newdata[k] = {};
@@ -183,8 +188,10 @@ StackedQuantileChart.prototype.calculate = function() {
             keydata = newdata[k];
         }
         that.keys.forEach(function(v) { 
-            keydata[v] += d[v]; 
-            keydata["total"] += d[v];
+//            keydata[v] += d[v];
+//            keydata["total"] += d[v];
+            keydata[v] += (isNaN(d[v]))? 0 : d[v];
+            keydata["total"] += (isNaN(d[v]))? 0 : d[v];
         });
         newdata[k] = keydata;
     });

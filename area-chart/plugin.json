@@ -1,0 +1,14 @@
+{
+  "defaultSettings": {
+    "label" : "date",
+    "value": "close",
+    "labelNames" : []
+  },
+  "sampleData": [
+    {"date": "2018-01-30", "close": 0.12},
+    {"date": "2018-01-31", "close": 0.28},
+    {"date": "2018-02-01", "close": 0.23},
+    {"date": "2018-02-02", "close": 0.25},
+    {"date": "2018-02-03", "close": 0.17}
+  ]
+}

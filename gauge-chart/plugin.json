@@ -1,0 +1,14 @@
+{
+  "defaultSettings": {
+    "label" : "lang",
+    "value": "ss",
+    "labelNames" : []
+  },
+  "sampleData": [
+    {"lang": "CN", "ss": 1492},
+    {"lang": "JP", "ss": 8167},
+    {"lang": "EN", "ss": 2782},
+    {"lang": "DK", "ss": 4253},
+    {"lang": "UK", "ss": 12702}
+  ]
+}

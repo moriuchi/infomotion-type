@@ -122,6 +122,7 @@ MultiLineChart.prototype.calculate = function() {
     var newdata = {};
     this.data.forEach(function(d) {
         var k = d[that.settings.label];
+        if(!k) return;
         var keydata = {};
         if(!newdata[k]) {
             newdata[k] = {};
@@ -130,7 +131,8 @@ MultiLineChart.prototype.calculate = function() {
             keydata = newdata[k];
         }
         that.keys.forEach(function(v) { 
-            keydata[v] += d[v]; 
+//            keydata[v] += d[v];
+            keydata[v] += (isNaN(d[v]))? 0 : d[v];
         });
         newdata[k] = keydata;
     });
@@ -192,21 +194,6 @@ MultiLineChart.prototype.refresh = function() {
         .attr("fill", function(d) { return that.color(d.id); })
         .attr("font-family", "sans-serif")
         .text(function(d) { return d.id; });
-
-/*
-    var valLabel = this.base.selectAll(".linechart__vallabel").data(data);
-    valLabel.enter().append('text');
-    valLabel.attr("class", "linechart__vallabel")
-        .transition()
-        .duration(500)
-        .attr("x", function(d) {
-            return that.x(d.key)+that.x.rangeBand()/2-d.value.toString().length*3;
-        })
-        .attr("y", function(d, i) { return that.height; })
-        .attr("dy", "-1em");
-
-    valLabel.exit().remove();
-*/
 
     this.svg = d3.select(this.el).transition();
 
