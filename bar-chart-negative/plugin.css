@@ -1,0 +1,19 @@
+.bar__positive {
+  fill: steelblue;
+}
+
+.bar__negative {
+  fill: darkorange;
+}
+
+.barchart_nega__axis text {
+  font: 10px sans-serif;
+}
+
+.barchart_nega__axis path,
+.barchart_nega__axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+

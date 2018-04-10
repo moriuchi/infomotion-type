@@ -1,0 +1,14 @@
+{
+  "defaultSettings": {
+    "label" : "key",
+    "value": "negative",
+    "labelNames" : []
+  },
+  "sampleData": [
+    {"key": "AS", "negative": -12},
+    {"key": "DF", "negative": -23},
+    {"key": "GH", "negative": 25},
+    {"key": "KL", "negative": -17},
+    {"key": "ZX", "negative": 28}
+  ]
+}
