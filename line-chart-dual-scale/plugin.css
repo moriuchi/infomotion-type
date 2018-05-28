@@ -1,0 +1,20 @@
+.linechartdual__axis path,
+.linechartdual__axis line {
+  fill: none;
+  stroke: grey;
+  stroke-width: 1.5px;
+  shape-rendering: crispEdges;
+}
+
+.line1 {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.line2 {
+  fill: none;
+  stroke: orange;
+  stroke-width: 1.5px;
+}
+
